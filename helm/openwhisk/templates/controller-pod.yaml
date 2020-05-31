@@ -184,6 +184,7 @@ spec:
 {{ end }}
         # properties for lean messaging provider
 {{ include "openwhisk.lean.provider" . | indent 8 }}
+{{ include "openwhisk.edge.provider" . | indent 8 }}
 
 {{- if .Values.controller.lean }}
 {{ include "openwhisk.invoker.apihost" . | indent 8 }}
