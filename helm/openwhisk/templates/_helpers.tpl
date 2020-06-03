@@ -253,12 +253,20 @@ imagePullSecrets:
 {{- end -}}
 
 {{/* Environment variables required for Edge OW configuration */}}
-{{- define "openwhisk.edge.provider" -}}
+{{- define "openwhisk.edge.loadbalancer.provider" -}}
 {{- if .Values.controller.edge -}}
 - name: "CONFIG_whisk_spi_LoadBalancerProvider"
   value: "org.apache.openwhisk.core.loadBalancer.EdgeBalancer"
 {{- end -}}
 {{- end -}}
+
+{{- define "openwhisk.edge.invoker.provider" -}}
+{{- if .Values.controller.edge -}}
+- name: "CONFIG_whisk_spi_InvokerProvider"
+  value: "org.apache.openwhisk.core.invoker.EdgeInvoker"
+{{- end -}}
+{{- end -}}
+
 
 {{/* Environment variables required for invoker API HOST configuration */}}
 {{- define "openwhisk.invoker.apihost" -}}

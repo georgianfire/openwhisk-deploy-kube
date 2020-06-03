@@ -90,6 +90,9 @@ spec:
           - name: "PORT"
             value: {{ .Values.invoker.port | quote }}
 
+          # properties for edge invoker provider
+{{ include "openwhisk.edge.invoker.provider" . | indent 10 }}
+
           # Needed by invoker to set the environment variable __OW_API_HOST in action containers
 {{ include "openwhisk.invoker.apihost" . | indent 10 }}
 
@@ -192,3 +195,5 @@ spec:
           containerPort: {{ .Values.invoker.port }}
 {{ include "openwhisk.invoker.volume_mounts" . }}
 {{- end }}
+
+
